@@ -1,3 +1,7 @@
+# Written by Jiachen Li for COMP9021
+
+
+# Insert your code here
 import sys
 
 filename = input('Which data file do you want to use? ')

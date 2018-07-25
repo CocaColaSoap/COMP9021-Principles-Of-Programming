@@ -35,42 +35,21 @@ def good_subsequences(word):
  'bc', 'bca', 'c', 'ca', 'cab', 'cb', 'cba']
     '''
     # Insert your code here
-    result =[]
-    if len(word) == 0:
-        return ['']
-    L = list(word)
-    LL = ['']
-    flag  = True
-    for i in range(len(L)-1):
-        if L[i+1] != L[i]:
-            LL.append(L[i])
-            flag = False
-        if i == len(L)-2:
-            LL.append(L[i+1])
-        if flag == True and  i == len(L) - 2 :
-            LL.append(L[i])
-    for i in range(len(LL)):
-        if LL[i] not in result:
-            result.append(LL[i])
-    if len(result) > 1:
-        for i in range(len(LL)):
-            for j in range(i+1,len(LL)):
-                if LL[i] == LL[j]:
-                    pass
-                elif LL[i] + LL[j] not in result:
-                    result.append(LL[i]+LL[j])
-    if len(result) > 2:
-        for i in range(len(LL)):
-            for j in range(i+1,len(LL)):
-                for k in range(j+1,len(LL)):
-                    if LL[i] == LL[j] or LL[i] == LL[k] or LL[k] == LL[j]:
-                        pass
-                    elif LL[i] + LL[j] + LL[k] not in result:
-                        result.append(LL[i] + LL[j] + LL[k])
-    return sorted(result)
-# Possibly define another function
-                
 
+# Possibly define another function
+    l = []
+    for i in range(len(word)):
+        if word[i] not in l:
+            l.append(word[i])
+        for j in range(len(l)):
+            if l[j]+word[i] not in l and word[i] not in l[j]:
+                l.append(l[j]+word[i])
+    l.append('')
+    return sorted(l)
+
+
+# print(good_subsequences('abcdabcdabcd'))
+#
 if __name__ == '__main__':
     import doctest
     doctest.testmod()

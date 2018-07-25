@@ -106,11 +106,24 @@ def find_word_vertically(grid, word):
     # Replace pass above with your code
 
 
-# def find_word_diagonally(grid, word):
-#     location =''
-#     size = len(word)
-#     for i in range(len(grid)-size):
-#         for j in range(len(grid[i]))
+def find_word_diagonally(grid, word):
+    location =''
+    size = len(word)
+    for i in range(len(grid)-size+1):
+        flag = False
+        for j in range(len(grid[i])-size+1):
+            word_back = ''
+            for k, h in zip(range(i,i+size),range(j,j+size)):
+                word_back += str(grid[k][h])
+            if word_back == word:
+                flag = True
+                location = '(' + str(i + 1) + ', ' + str(j + 1) + ')'
+                break
+        if flag is True:
+            break
+    return location
+
+
 
 
 

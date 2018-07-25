@@ -59,7 +59,31 @@ def is_valid_prefix_expression(expression):
     '''
     stack = []
     try:
-        pass
+        L = expression.split()
+        List = ['+', '-', '*', '/']
+        for i in range(len(L)):
+            if L[i] not in List:
+                x = int(L[i])
+        LL = []
+        for i in range(-1, -len(L) - 1, -1):
+            if L[i] in List:
+                x = LL.pop()
+                y = LL.pop()
+                if L[i] == '+':
+                    LL.append(x + y)
+                if L[i] == '-':
+                    LL.append(x - y)
+                if L[i] == '*':
+                    LL.append(x * y)
+                if L[i] == '/':
+                    LL.append(x / y)
+            else:
+                LL.append(int(L[i]))
+        if len(LL) != 1:
+            raise ValueError('Incorrect prefix expression')
+    except ValueError:
+        print('Incorrect prefix expression')
+
         # Replace pass above with your code
     # - IndexError is raised in particular when trying to pop from an empty list
     # - ValueError is raised in particular when trying to convert to an int
@@ -91,6 +115,25 @@ def evaluate_prefix_expression(expression):
     -1
     '''
     # Insert your code here
+    L = expression.split()
+    List = ['+','-','*','/']
+    LL = []
+    for i in range(-1,-len(L)-1,-1):
+        if L[i] in List:
+            x = LL.pop()
+            y = LL.pop()
+            if L[i] == '+':
+                LL.append(x+y)
+            if L[i] == '-':
+                LL.append(x-y)
+            if L[i] == '*':
+                LL.append(x*y)
+            if L[i] == '/':
+                LL.append(x/y)
+        else:
+            LL.append(int(L[i]))
+
+    return(LL[0])
 
 
 if __name__ == '__main__':

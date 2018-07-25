@@ -74,14 +74,15 @@ def is_word_word_ladder(word_1, word_2, candidate_ladder):
         if candidate_ladder[i] not in closest_words[candidate_ladder[i - 1]]:
             return False
 
-    length = len(candidate_ladder)
     que = deque()
-    que.append((1, [word_1]))
+    length = len(candidate_ladder)
     flag = True
-
+    que.append((1,[word_1]))
     while flag == True:
         x, y = que.pop()
+
         if x >= length:
+            print(que)
             flag = False
             break
 
@@ -93,10 +94,14 @@ def is_word_word_ladder(word_1, word_2, candidate_ladder):
             for i in closest_words[y[-1]]:
                 z = y + [i]
                 que.appendleft((x + 1, z))
+
     if flag == False:
         return True
     if flag == True:
         return False
+
+
+
 
 
 if __name__ == '__main__':

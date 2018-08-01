@@ -29,6 +29,20 @@ def f(a, b):
         sys.exit()
     max_gap = 0
     # Insert your code here
+    LL = []
+    for i in range(a, b+1, 1):
+        flag = True
+        for j in range(2, i):
+            if i % j == 0:
+                flag = False
+                break
+        if flag is True:
+            LL.append(i)
+
+    for i in range(len(LL)-1):
+        if LL[i+1] - LL[i] > max_gap:
+            max_gap = LL[i+1] - LL[i]-1
+
     print('The maximum gap between successive prime numbers in that interval is', max_gap)
 
 

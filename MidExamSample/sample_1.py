@@ -36,6 +36,28 @@ def f(arg_for_seed, nb_of_elements, max_element):
     print('Here is L:', L)
     R = []
     # Insert your code here
+    if len(L) == 0:
+        pass
+    elif len(L) == 1:
+        R.append(L)
+    else:
+        L_a = []
+        for i in range(len(L)-1):
+            if L[i+1] > L[i]:
+                L_a.append(L[i])
+                L_a.append(L[i+1])
+            if L[i+1] <= L[i]:
+                L_a.append(L[i])
+                L_b = sorted(list(set(L_a)))
+                R.append(L_b)
+                L_a = []
+
+            if i == len(L) - 2 and L_a != []:
+                R.append(L_a)
+
+            if i == len(L) - 2 and L_a == []:
+                R.append([L[i+1]])
+
     print('The decomposition of L into increasing sublists is:', R)    
 
 

@@ -31,7 +31,21 @@ def f(n):
     n_factorial = factorial(n)
     nb_of_digits_excluding_the_trailing_0s = 0
     # Insert your code here
+    n_factorial_str = str(n_factorial)
+    for i in range(len(n_factorial_str)-1, -1, -1):
+        if n_factorial_str[-1] != '0':
+            nb_of_digits_excluding_the_trailing_0s = len(n_factorial_str)
+            break
+        elif n_factorial_str[i] != '0':
+            nb_of_digits_excluding_the_trailing_0s = i+1
+            break
 
+
+    print(f"{n} factorial is {n_factorial}")
+    if nb_of_digits_excluding_the_trailing_0s == 1:
+        print("It has 1 digit, the trailing 0's excepted")
+    else:
+        print(f"It has {nb_of_digits_excluding_the_trailing_0s} digits, the trailing 0's excepted")
 
 if __name__ == '__main__':
     import doctest
